@@ -2,6 +2,7 @@ require 'sinatra/sprockets/configuration'
 require 'sinatra/sprockets/asset_paths'
 require 'sinatra/sprockets/helpers'
 require 'sinatra/sprockets/static_compiler'
+require 'uglifier'
 
 module Sinatra
   module Sprockets
