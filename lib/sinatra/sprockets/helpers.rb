@@ -1,3 +1,5 @@
+require 'active_support/core_ext'
+
 module Sinatra
   module Sprockets
     module Helpers

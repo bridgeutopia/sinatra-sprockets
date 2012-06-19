@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'yui-compressor'
   s.add_runtime_dependency 'execjs'
   s.add_runtime_dependency 'therubyracer'
+  s.add_runtime_dependency 'activesupport'
 
   s.files = [
     "Gemfile",
