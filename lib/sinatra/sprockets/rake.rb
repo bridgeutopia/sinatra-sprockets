@@ -3,8 +3,8 @@ require "fileutils"
 namespace :assets do
   desc "Compile all the assets named in config.assets.precompile"
   task :precompile do
-    # Rake::Task["assets:clean:all"].invoke
     Rake::Task["assets:precompile:all"].invoke
+    Rake::Task["assets:clean:all"].invoke
   end
 
   namespace :precompile do
@@ -16,12 +16,7 @@ namespace :assets do
 
       env      = Sinatra::Sprockets.environment
       target   = File.join(config.app.settings.public_path, config.prefix)
-      compiler = Sinatra::Sprockets::StaticCompiler.new(env,
-                                               target,
-                                               config.precompile,
-                                               :manifest_path => config.manifest_path,
-                                               :digest => config.digest,
-                                               :manifest => true)
+      compiler = Sinatra::Sprockets::StaticCompiler.new(env, target, config.precompile, :manifest_path => config.manifest_path, :digest => config.digest, :manifest => true)
       compiler.compile
     end
   end
@@ -34,8 +29,24 @@ namespace :assets do
   namespace :clean do
     task :all => ["environment"] do
       config = Sinatra::Sprockets.config
-      public_asset_path = File.join(config.app.settings.public_path, config.prefix)
-      rm_rf public_asset_path, :secure => true
+
+      releases = Dir["#{config.app.settings.public_path}/assets/*.yml"].sort.reverse
+      n = 5
+
+      filenames_to_save = []
+      releases[0...n].each do |r|
+        filenames_to_save |= YAML::load(File.open(r)).values
+      end
+
+      filenames_to_delete = []
+      releases[0...-n].each do |r|
+        filenames_to_delete |= YAML::load(File.open(r)).values
+      end
+
+      (filenames_to_delete - filenames_to_save).each do |filename|
+        rm_rf filename
+        rm_rf "#{filename}.gz" if filename =~ /\.(css|js)$/
+      end
     end
   end
 end
