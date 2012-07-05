@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'sprockets'
+gem 'sprockets', '~> 2.0'
 gem 'uglifier'
 gem 'closure-compiler'
 gem 'yui-compressor', :require => "yui/compressor"
