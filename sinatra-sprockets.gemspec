@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'closure-compiler'
   s.add_runtime_dependency 'yui-compressor'
   s.add_runtime_dependency 'execjs'
-  s.add_runtime_dependency 'therubyracer'
   s.add_runtime_dependency 'activesupport'
   s.add_runtime_dependency 'uglifier'
 
@@ -35,6 +34,6 @@ Gem::Specification.new do |s|
     "lib/sinatra/sprockets/static_compiler.rb",
     "lib/sinatra/sprockets/version.rb"
   ]
-  
+
   s.require_paths << "lib"
 end
