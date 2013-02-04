@@ -6,15 +6,15 @@ Gem::Specification.new do |s|
   s.name        = "sinatra-sprockets"
   s.version     = Sinatra::Sprockets::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["thegorgon"]
-  s.email       = ["jessereiss@gmail.com"]
+  s.authors     = ["thegorgon", "bridgeutopia"]
+  s.email       = ["jessereiss@gmail.com", "info@bridgeutopiaweb.com"]
   s.homepage    = "http://github.com/thegorgon/sinatra-sprockets"
   s.summary     = %q{Sinatra helpers for Sprockets integration.}
   s.description = %q{Use Sprockets effectively with Sinatra.}
 
   s.rubyforge_project = s.name
 
-  s.add_runtime_dependency 'sprockets',       '~> 2.0.0'
+  s.add_runtime_dependency 'sprockets',       '~> 2.8.2'
   s.add_runtime_dependency 'uglifier'
   s.add_runtime_dependency 'closure-compiler'
   s.add_runtime_dependency 'yui-compressor'
